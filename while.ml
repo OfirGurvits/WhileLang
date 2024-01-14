@@ -14,3 +14,13 @@ type b_exp =
   | false
   | Not of b_exp
   | And of b_exp * b_exp
+  | Equal of a_expr * a_expr
+  | GreaterThan of a_expr * a_expr
+
+type stm = 
+  | Assign of var * a_expr
+  | Skip
+  | EndLine of stm * stm
+  | If of b_exp * stm * stm
+  | While of b_exp * stm
+  
