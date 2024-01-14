@@ -35,3 +35,12 @@ let rec eval_arithmetic = function
 | Mul(x,y) -> eval_arithmetic x * eval_arithmetic y
 | Var(x) -> Hashtbl.find variables x
 | Num(n) -> n
+
+let rec eval_bool = function
+| Not(exp) -> not (eval_bool exp)
+| And(x,y) -> eval_bool x && eval_bool y
+| Equal(x,y) -> eval_arithmetic x == eval_arithmetic y
+| GreaterThan(x,y) -> eval_arithmetic x <= eval_arithmetic y
+| true -> true
+| false -> false
+
